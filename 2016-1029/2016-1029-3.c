@@ -13,7 +13,8 @@ int main(){
 	p = next[p]; 
 	alive--;
 	for(int t = 0; t < K-1; t++){
-		for(int i = 0; i < (M-2) % alive; i++){
+		int m = (M-2) % alive;
+		for(int i = 0; i < m; i++){
 			p = next[p];
 		}
 		next[p] = next[next[p]];
