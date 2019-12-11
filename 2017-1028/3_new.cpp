@@ -27,7 +27,7 @@ int main(){
 	//calculate height
 	int height[100002] = {0};
 	for(int i = 1; i <= n; i++){
-		if(is_leaf[i]){
+		if(is_leaf[i]){  
 			height[i] = 0;
 			int pos = i;
 			while(pos != root && height[parent[pos]] < height[pos]+1){
@@ -37,7 +37,7 @@ int main(){
 		}
 	}
 	//height sum
-	int sum = 0;
+	unsigned long long int sum = 0;
 	for(int i = 1; i <= n; i++){
 		sum += height[i];
 	}
