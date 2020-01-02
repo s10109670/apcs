@@ -1,12 +1,14 @@
 #include <iostream>
 #include <algorithm>
+#include <cstring>
 
 using namespace std;
 typedef unsigned long long int ull;
 
 ull to_bit(string s){
 	ull bitset = 0;
-	for(int i = 0; i < s.length(); i++){
+	int len = s.length();
+	for(int i = 0; i < len; i++){
 		int pos;
 		if(s[i] <= 'Z')
 			pos = s[i]-'A';
@@ -37,21 +39,24 @@ int main(){
 			cnti++;
 			i++;
 		}
-		min = i+1; max = nowj;
+		ull complement = Union - cp[i];
+		int min = i+1, max = nowj;
 		while(min != max){
-			int mid = (min + max)/2;
-			
+			int mid = (min + max + 1)/2;
+			if(cp[mid] <= complement)
+				min = mid;
+			else
+				max = mid-1;
 		}
-		for(int j = nowj; j > i; j--){
-			if((cp[i]^cp[j]) == Union){
-				int cntj = 1;
-				while(i < j && cp[j] == cp[j-1]){
-					cntj++;
-					j--;
-				}
-				cnt += cnti*cntj;
-				nowj = j-1;
+		nowj = max;
+		if(cp[nowj] == complement){
+			int cntj = 1;
+			while(nowj > i && cp[nowj] == cp[nowj-1]){
+				cntj++;
+				nowj--;
 			}
+			cnt += cnti*cntj;
+			nowj--;
 		}
 	}
 	cout << cnt << endl;
