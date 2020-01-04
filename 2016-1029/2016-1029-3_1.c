@@ -13,6 +13,5 @@ int main(){
 	int N, M, K;
 	scanf("%d %d %d", &N, &M, &K);
 	printf("%lld\n", kth(N, M, K)+1);
-
 	return 0;
 }

@@ -8,7 +8,7 @@ int main(){
 	/* from round-K+1 think back to round-0 */
 	for(int i = K+1; i > 0; i--){
 		alive = (alive + M) % (N-i+1);
-		//cout << alive;
+		//cout << "goes to pos:" << alive << endl;
 	}
 	cout << alive+1 << endl;
 }
