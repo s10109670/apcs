@@ -15,7 +15,6 @@ int main(){
 	qsort(P, n, sizeof(int), cmp);
 	for(int r = 1; r <= P[n-1]-P[0]; r++){
 		int cntk = 0, nowk = -r-1;
-		//printf("r = %d\n", r);
 		for(int i = 0; i < n && cntk <= k; i++){
 			if(nowk+r < P[i]){
 				cntk++;
@@ -28,9 +27,4 @@ int main(){
 			break;
 		}
 	}
-	/*for(int i = 0; i < n; i++){
-		printf("%d ", P[i]);
-	}
-	printf("\n");
-	*/
 }
